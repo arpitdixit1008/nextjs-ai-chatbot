@@ -54,6 +54,98 @@ You will need to use the environment variables [defined in `.env.example`](.env.
 3. Download your environment variables: `vercel env pull`
 
 ```bash
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PathMentor Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #chatbot {
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        #header {
+            background: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        #messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        #input {
+            display: flex;
+            padding: 10px;
+        }
+        #input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #input button {
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="chatbot">
+    <div id="header">
+        <h2>PathMentor</h2>
+        <img src="path_to_your_logo.png" alt="PathMentor Logo" style="width: 50px; height: auto;">
+    </div>
+    <div id="messages"></div>
+    <div id="input">
+        <input type="text" id="userInput" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    function sendMessage() {
+        const userInput = document.getElementById('userInput');
+        const message = userInput.value;
+        if (message) {
+            displayMessage('You: ' + message);
+            userInput.value = '';
+            // Here you can add your logic to collect data from websites and AI
+            // For now, we'll just echo the message
+            setTimeout(() => {
+                displayMessage('PathMentor: ' + 'You said: ' + message);
+            }, 1000);
+        }
+    }
+
+    function displayMessage(message) {
+        const messagesDiv = document.getElementById('messages');
+        messagesDiv.innerHTML += '<div>' + message + '</div>';
+        messagesDiv.scrollTop = messagesDiv.scrollHeight; // Scroll to the bottom
+    }
+</script>
+
+</body>
+</html>
 pnpm install
 pnpm dev
 ```
